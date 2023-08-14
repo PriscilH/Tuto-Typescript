@@ -1,3 +1,5 @@
+var perso1 = ["Mounya", 6, true];
+var perso2 = ["Tyo", 18, true];
 var prenom = "Vador";
 var age = 32;
 var genre = true;
@@ -7,16 +9,14 @@ var adresse = {
     ville: "Mars",
     cp: 31000
 };
-var notes = [10, 16, 18];
-var prenoms = ["Mounya", "Joe", "Tya"];
-var presonnes = ["Mounya", 6];
-var perso = ["Mounya", 6, true];
+function afficherAdresse(in_adr) {
+    console.log(in_adr.ligne);
+    console.log(in_adr.cp + " " + in_adr.ville);
+}
+afficherAdresse(adresse);
+afficherAdresse({ ligne: "rue des plantes", ville: "Nantes", cp: 44000 });
 var tab = [
-    [10, 12],
-    [14, 46],
-    [18, 20]
-];
-var tab2 = [
     { x: 1, y: 2 },
-    { x: 2, y: 3 }
+    { x: 2, y: 3 },
+    { x: 1, y: 3 }
 ];
