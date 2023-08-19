@@ -1,37 +1,36 @@
-interface Adresse {
-    ligne : string;
-    ville : string;
-    cp : number;
+interface Personnage {
+    nom : string;
 }
 
-type Personne = [string,number,boolean];
-let perso1:Personne = ["Mounya",6,true];
-let perso2:Personne = ["Tyo",18,true];
-
-const prenom = "Vador";
-const age = 32;
-const genre = true;
-const sports = ["foot","basket"]
-const adresse:Adresse  = {
-    ligne : "rue des étoiles",
-    ville : "Mars",
-    cp : 31000
+interface Humain extends Personnage  {
+    age : number;
 }
 
-function afficherAdresse (in_adr:Adresse){
-    console.log(in_adr.ligne);
-    console.log(in_adr.cp + " " + in_adr.ville);
+interface Monstre extends Personnage {
+    tribu : string;
 }
 
-afficherAdresse(adresse);
-afficherAdresse({ligne:"rue des plantes",ville:"Nantes",cp:44000});
+type Perso= Humain | Monstre;
 
-interface Point {
-    x:number;
-    y:number;
+const p1: Humain = {
+    nom : "Mounya",
+    age : 6
 }
-const tab: Point[] = [
-    {x:1,y:2},
-    {x:2,y:3},
-    {x:1,y:3}
-]
+
+const p2 : Monstre = {
+    nom : "Albo",
+    tribu : "Orc vert"
+}
+
+function afficherPersonnage(perso : Perso){
+    console.log("Nom : " + perso.nom);
+    if("age" in perso){
+      console.log("Age : " + perso.age);
+    }
+    if ("tribu" in perso){
+        console.log("Tribu : " + perso.tribu);
+    }
+}
+
+afficherPersonnage(p1);
+afficherPersonnage(p2);
