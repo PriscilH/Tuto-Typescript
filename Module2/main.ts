@@ -40,3 +40,19 @@ function afficherPersonnage(perso : Perso){
 afficherPersonnage(p1);
 afficherPersonnage(p2);
 
+// Exemple surcharge de fonction : 
+function format(input: string): string;
+function format(input: number): string;
+
+function format(input: string | number): string {
+  if (typeof input === "string") {
+    return `Text: ${input}`;
+  } else {
+    return `Number: ${input.toString()}`;
+  }
+}
+
+const formattedText = format("Hello");
+const formattedNumber = format(42);
+console.log(formattedText); // Text: Hello
+console.log(formattedNumber); // Number: 42

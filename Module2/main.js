@@ -19,3 +19,15 @@ function afficherPersonnage(perso) {
 }
 afficherPersonnage(p1);
 afficherPersonnage(p2);
+function format(input) {
+    if (typeof input === "string") {
+        return "Text: ".concat(input);
+    }
+    else {
+        return "Number: ".concat(input.toString());
+    }
+}
+var formattedText = format("Hello");
+var formattedNumber = format(42);
+console.log(formattedText); // Text: Hello
+console.log(formattedNumber); // Number: 42
