@@ -1,17 +1,19 @@
 var p1 = {
     nom: "Mounya",
+    race: "Humain",
     age: 6
 };
 var p2 = {
     nom: "Albo",
+    race: "Monstre",
     tribu: "Orc vert"
 };
 function afficherPersonnage(perso) {
     console.log("Nom : " + perso.nom);
-    if ("age" in perso) {
+    if (perso.race === "Humain") {
         console.log("Age : " + perso.age);
     }
-    if ("tribu" in perso) {
+    if (perso.race === "Monstre") {
         console.log("Tribu : " + perso.tribu);
     }
 }
