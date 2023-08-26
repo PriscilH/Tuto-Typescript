@@ -1,13 +1,14 @@
-var Classe;
-(function (Classe) {
-    Classe["GUERRIER"] = "Guerrier";
-    Classe["VOLEUR"] = "Voleur";
-    Classe["ARCHER"] = "Archer";
-})(Classe || (Classe = {}));
-;
-var p1 = {
-    nom: "Math",
-    classe: Classe.GUERRIER
-};
-console.log(Classe.GUERRIER);
-console.log(p1);
+// Type Unknown
+var test;
+test = 31;
+test = "Math";
+test = true;
+var sexe;
+if (typeof test === "boolean") {
+    sexe = test;
+}
+console.log(sexe);
+// Type Never
+function excep(msg) {
+    throw { message: msg };
+}

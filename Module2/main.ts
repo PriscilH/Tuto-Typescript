@@ -1,21 +1,19 @@
-enum Classe {GUERRIER = "Guerrier", VOLEUR="Voleur", ARCHER="Archer"};
 
-interface Personnage {
-    nom : string;
-}
+// Type Unknown
+let test : unknown;
+test = 31;
+test = "Math";
+test = true;
 
-interface Guerrier extends Personnage {
-    classe : Classe.GUERRIER;
+let sexe : boolean;
+if(typeof test === "boolean"){
+    sexe = test;
 }
+console.log(sexe);
 
-interface Voleur extends Personnage {
-    classe : Classe.VOLEUR
+// Type Never
+function excep(msg:string) : never {
+   throw {message : msg}
+   
 }
-const p1:Personnage & Guerrier = {
-    nom : "Math",
-    classe : Classe.GUERRIER
-
-}
-console.log(Classe.GUERRIER);
-console.log(p1);
 
