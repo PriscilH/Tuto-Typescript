@@ -1,23 +1,21 @@
-interface Personnage  {
+type Personnage = {
     nom : string;
-    age : number;
+    poids : number,
+    [props:string] : string | number;
 }
 
-interface Humain  {
-    classe : string;
-}
-
-interface Homme extends Personnage, Humain{
-    sports : string[],
-};
-
-const test : Humain = {
-    classe : "voleur"
-}
-
-const math:Homme ={
+const p1:Personnage = {
     nom : "Math",
-    age : 31,
-    classe : "Guerrier",
-    sports : ["foot", "rugby"]
+    poids : 48,
+    age : 31
+
 }
+
+p1.taille = 180;
+
+console.log(p1);
+// Cela crée un Object, la propriété taille avec sa valeur a été ajoutée
+// age : 31
+// nom : "Math"
+// poids : 48
+// taille : 180
