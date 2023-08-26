@@ -1,21 +1,21 @@
-type Personnage = {
+enum Classe {GUERRIER = "Guerrier", VOLEUR="Voleur", ARCHER="Archer"};
+
+interface Personnage {
     nom : string;
-    poids : number,
-    [props:string] : string | number;
 }
 
-const p1:Personnage = {
+interface Guerrier extends Personnage {
+    classe : Classe.GUERRIER;
+}
+
+interface Voleur extends Personnage {
+    classe : Classe.VOLEUR
+}
+const p1:Personnage & Guerrier = {
     nom : "Math",
-    poids : 48,
-    age : 31
+    classe : Classe.GUERRIER
 
 }
-
-p1.taille = 180;
-
+console.log(Classe.GUERRIER);
 console.log(p1);
-// Cela crée un Object, la propriété taille avec sa valeur a été ajoutée
-// age : 31
-// nom : "Math"
-// poids : 48
-// taille : 180
+

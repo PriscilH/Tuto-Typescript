@@ -1,12 +1,13 @@
+var Classe;
+(function (Classe) {
+    Classe["GUERRIER"] = "Guerrier";
+    Classe["VOLEUR"] = "Voleur";
+    Classe["ARCHER"] = "Archer";
+})(Classe || (Classe = {}));
+;
 var p1 = {
     nom: "Math",
-    poids: 48,
-    age: 31
+    classe: Classe.GUERRIER
 };
-p1.taille = 180;
+console.log(Classe.GUERRIER);
 console.log(p1);
-// Cela crée un Object, la propriété taille avec sa valeur a été ajoutée
-// age : 31
-// nom : "Math"
-// poids : 48
-// taille : 180
