@@ -1,19 +1,7 @@
+const inputNom = document.querySelector("#nom")! as HTMLInputElement;
+inputNom.value="test";
 
-// Type Unknown
-let test : unknown;
-test = 31;
-test = "Math";
-test = true;
+const inputAge = document.querySelector("#age")! as HTMLInputElement;
+inputAge.value="31";
 
-let sexe : boolean;
-if(typeof test === "boolean"){
-    sexe = test;
-}
-console.log(sexe);
-
-// Type Never
-function excep(msg:string) : never {
-   throw {message : msg}
-   
-}
-
+const titreh1 = document.querySelector("#titre1") as HTMLHeadingElement;
