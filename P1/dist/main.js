@@ -27,8 +27,23 @@ const devises = [dollar, euro, livre, yuan];
 console.log(devises);
 const deviseSelect = document.querySelector("#devise-initiale");
 deviseSelect.innerHTML = listOption(devises);
+let deviseSelectValeur = deviseSelect.value;
+console.log(deviseSelectValeur);
+deviseSelect.addEventListener("change", () => {
+    console.log("Valeur : " + deviseSelect.value);
+});
 const deviseFinSelect = document.querySelector("#devise-finale");
 deviseFinSelect.innerHTML = listOption(devises);
+let deviseFinValeur = deviseFinSelect.value;
+console.log(deviseFinValeur);
+deviseFinSelect.addEventListener("change", () => {
+    console.log("Valeur : " + deviseFinSelect.value);
+});
+const montantInput = document.querySelector("#montant");
+let montant;
+montantInput.addEventListener('keyup', () => {
+    montant = +montantInput.value;
+});
 function listOption(lesdevises) {
     let listDevisTxt = "";
     for (let devise of lesdevises) {

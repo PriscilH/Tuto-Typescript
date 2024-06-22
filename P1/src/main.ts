@@ -38,9 +38,30 @@ console.log(devises);
 
 const deviseSelect = document.querySelector("#devise-initiale")! as HTMLSelectElement;
 deviseSelect.innerHTML = listOption(devises);
+let deviseSelectValeur = deviseSelect.value;
+console.log(deviseSelectValeur);
+deviseSelect.addEventListener("change", () => {
+    console.log("Valeur : " + deviseSelect.value)
+
+})
 
 const deviseFinSelect = document.querySelector("#devise-finale")! as HTMLSelectElement;
 deviseFinSelect.innerHTML = listOption(devises);
+let deviseFinValeur = deviseFinSelect.value;
+console.log(deviseFinValeur);
+deviseFinSelect.addEventListener("change", () => {
+    console.log("Valeur : " + deviseFinSelect.value)
+
+})
+
+
+const montantInput = document.querySelector("#montant")! as HTMLInputElement;
+let montant:number;
+montantInput.addEventListener('keyup', () => {
+    montant = +montantInput.value;
+});
+
+
 function listOption(lesdevises:Devise[]) : string {
     let listDevisTxt = "";
     for(let devise of lesdevises){
