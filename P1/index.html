@@ -8,8 +8,14 @@
 <body>
     <form>
         <div>
-            <label>Montant :</label>
-            <input id="montant" type="number" />
+            <label for="montant">Montant :</label>
+            <input id="montant" type="number"/> 
+        </div>
+        <label>Devise à convertir :</label>
+        <select id="devise-finale">
+            <!-- <option value="Dollar">Dollar - ($)</option>
+            <option value="Euro" selected>Euro - (€)</option> -->
+        </select>
         </div>
         <div>
             <label>Devise :</label>
@@ -19,13 +25,8 @@
             </select>
         </div>
         <div>
-            <label>Devise à convertir :</label>
-            <select id="devise-finale">
-                <!-- <option value="Dollar">Dollar - ($)</option>
-                <option value="Euro" selected>Euro - (€)</option> -->
-            </select>
-        </div>
-        <div id="resultats">Résultat : 5.6</div>
+        
+        <div id="resultats"></div>
     </form>
     <script src="dist/main.js"></script>
 </body>

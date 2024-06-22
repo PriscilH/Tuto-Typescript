@@ -34,32 +34,66 @@ const yuan:Devise = {
 }
 
 const devises:Devise[] = [dollar,euro,livre,yuan];
-console.log(devises);
 
 const deviseSelect = document.querySelector("#devise-initiale")! as HTMLSelectElement;
 deviseSelect.innerHTML = listOption(devises);
-let deviseSelectValeur = deviseSelect.value;
-console.log(deviseSelectValeur);
+let deviseSelectValeur = deviseSelect.value; // code de la devise
 deviseSelect.addEventListener("change", () => {
-    console.log("Valeur : " + deviseSelect.value)
-
+    deviseSelectValeur = deviseSelect.value;
+    affichResultat();
 })
 
 const deviseFinSelect = document.querySelector("#devise-finale")! as HTMLSelectElement;
 deviseFinSelect.innerHTML = listOption(devises);
-let deviseFinValeur = deviseFinSelect.value;
-console.log(deviseFinValeur);
+let deviseFinValeur = deviseFinSelect.value; // code de la devise
 deviseFinSelect.addEventListener("change", () => {
-    console.log("Valeur : " + deviseFinSelect.value)
-
+    deviseFinValeur = deviseFinSelect.value;
+    affichResultat();
 })
 
-
+let montant:number = 0;
 const montantInput = document.querySelector("#montant")! as HTMLInputElement;
-let montant:number;
 montantInput.addEventListener('keyup', () => {
     montant = +montantInput.value;
+    affichResultat();
 });
+
+let divResultat = document.querySelector("#resultats")! as HTMLDivElement;
+
+function affichResultat() {
+    divResultat.innerHTML = "Résultat : " + calculResultat(montant,deviseSelectValeur,deviseFinValeur);
+}
+
+function calculResultat(
+    in_montant:number,
+    in_deviseSelectValeur:string, 
+    in_deviseFinValeur:string 
+    ) : number{
+    let deviseSelectObjet = getDevise(in_deviseSelectValeur,devises);
+    let deviseFinObjet = getDevise(in_deviseFinValeur,devises);
+
+    // let deviseSelect:Devise;
+    // if(deviseSelectObjet) deviseSelect = deviseSelectObjet as Devise;
+    // else throw {message:"La devise initiale n'est pas correcte"};
+
+    // let deviseFinSelect:Devise;
+    // if(deviseFinObjet) deviseFinSelect = deviseFinObjet as Devise;
+    // else throw {message:"La devise initiale n'est pas correcte"};
+
+    return (montant * deviseSelectObjet.taux) / deviseFinObjet.taux;
+    
+
+}
+
+function getDevise(codeDevise:string, in_devises : Devise[]) : Devise  {
+    let d : Devise = in_devises[0];
+    for(let devise of in_devises){
+        if(codeDevise === devise.code){
+            d = devise;
+        }
+    }
+    return d;
+}
 
 
 function listOption(lesdevises:Devise[]) : string {

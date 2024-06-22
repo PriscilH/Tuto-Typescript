@@ -24,26 +24,50 @@ const yuan = {
     taux: 7.27
 };
 const devises = [dollar, euro, livre, yuan];
-console.log(devises);
 const deviseSelect = document.querySelector("#devise-initiale");
 deviseSelect.innerHTML = listOption(devises);
-let deviseSelectValeur = deviseSelect.value;
-console.log(deviseSelectValeur);
+let deviseSelectValeur = deviseSelect.value; // code de la devise
 deviseSelect.addEventListener("change", () => {
-    console.log("Valeur : " + deviseSelect.value);
+    deviseSelectValeur = deviseSelect.value;
+    affichResultat();
 });
 const deviseFinSelect = document.querySelector("#devise-finale");
 deviseFinSelect.innerHTML = listOption(devises);
-let deviseFinValeur = deviseFinSelect.value;
-console.log(deviseFinValeur);
+let deviseFinValeur = deviseFinSelect.value; // code de la devise
 deviseFinSelect.addEventListener("change", () => {
-    console.log("Valeur : " + deviseFinSelect.value);
+    deviseFinValeur = deviseFinSelect.value;
+    affichResultat();
 });
+let montant = 0;
 const montantInput = document.querySelector("#montant");
-let montant;
 montantInput.addEventListener('keyup', () => {
     montant = +montantInput.value;
+    affichResultat();
 });
+let divResultat = document.querySelector("#resultats");
+function affichResultat() {
+    divResultat.innerHTML = "Résultat : " + calculResultat(montant, deviseSelectValeur, deviseFinValeur);
+}
+function calculResultat(in_montant, in_deviseSelectValeur, in_deviseFinValeur) {
+    let deviseSelectObjet = getDevise(in_deviseSelectValeur, devises);
+    let deviseFinObjet = getDevise(in_deviseFinValeur, devises);
+    // let deviseSelect:Devise;
+    // if(deviseSelectObjet) deviseSelect = deviseSelectObjet as Devise;
+    // else throw {message:"La devise initiale n'est pas correcte"};
+    // let deviseFinSelect:Devise;
+    // if(deviseFinObjet) deviseFinSelect = deviseFinObjet as Devise;
+    // else throw {message:"La devise initiale n'est pas correcte"};
+    return (montant * deviseSelectObjet.taux) / deviseFinObjet.taux;
+}
+function getDevise(codeDevise, in_devises) {
+    let d = in_devises[0];
+    for (let devise of in_devises) {
+        if (codeDevise === devise.code) {
+            d = devise;
+        }
+    }
+    return d;
+}
 function listOption(lesdevises) {
     let listDevisTxt = "";
     for (let devise of lesdevises) {
