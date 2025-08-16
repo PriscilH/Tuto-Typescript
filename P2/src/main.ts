@@ -111,13 +111,13 @@ function verificationReponse(reponse: string): void {
     divResultat.innerHTML = `<div class="alert alert-danger">${reponse} est une mauvaise réponse</div>`;
   }
 
-  // Ajouter le bouton "Changer de pays" avec event listener
+  // Ajouter le bouton "Changer de pays" 
   const boutonChanger = document.createElement("button");
   boutonChanger.className = "btn btn-warning mt-2";
   boutonChanger.textContent = "Changer de pays";
   boutonChanger.addEventListener("click", () => {
-    afficherQuiz();          // Recharge un nouveau quiz
-    divResultat.innerHTML = ""; // Vide le message de résultat
+    afficherQuiz();        
+    divResultat.innerHTML = ""; 
   });
 
   divResultat.appendChild(boutonChanger);
