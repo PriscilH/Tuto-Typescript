@@ -1,10 +1,11 @@
 class Voiture {
-    
+   
     constructor(
         private _marque : string,
         private _modele : string,
         private _couleur : string,
         private _nbPortes : number,
+        public readonly annee : number
         ){
     }
 
@@ -13,6 +14,7 @@ class Voiture {
         console.log("Modèle : " + this._modele);
         this.afficherCouleur();
         console.log("Nombre de portes : " + this._nbPortes);
+        console.log("Annee de construction : " + this.annee);
     }
 
     private afficherCouleur() {
@@ -57,13 +59,11 @@ class Voiture {
     // }
 }
 
-var v1 = new Voiture("Yotota","Ryias","rouge",5);
-var v2 = new Voiture("Yotota","Risau","noire",3);
+var v1 = new Voiture("Yotota","Ryias","rouge",5,2020);
+var v2 = new Voiture("Yotota","Risau","noire",3,2021);
 
 v1.afficherVoiture();
-v1.marque = "Gepo";
-v1.modele = "803";
-v1.afficherVoiture();
+v2.afficherVoiture();
 
 
 
