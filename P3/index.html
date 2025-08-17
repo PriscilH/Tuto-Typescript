@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div> 
+        Afficher les aliemnts de 
+        <select id="type" onchange="listeAliment()">
+            <option value="Tous">Toutes</option>
+            <option value="Mauvais">Mauvaises</option>
+            <option value="Moyen">Médiocres</option>
+            <option value="Bon">Bonnes</option>
+        </select>
+        valeurs nutritionnelles :
+    </div>
+    <div>
+        <table style="border: 1px solid black;">
+            <thead>
+                <tr>
+                    <td>Nom</td>
+                    <td>Lipide</td>
+                    <td>Glucide</td>
+                    <td>Protéines</td>
+                    <td>Classe</td>
+                    <td>Image</td>
+                </tr>
+            </thead>
+            <tbody id="listeAliments"></tbody>
+        </table>
+    </div>
+     <script src="dist/classes/Aliments.class.js"></script>
+     <script src="dist/classes/Charcuterie.class.js"></script>
+     <script src="dist/classes/Fruits.class.js"></script>
+    <script src="dist/main.js"></script>
+</body>
+</html>
