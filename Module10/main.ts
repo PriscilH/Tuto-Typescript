@@ -4,9 +4,22 @@ function decoClass(nomClasse:string){
     }
 }
 
+function decoAttribut(typeAttribut : string){
+    return (target: any, propertyKey: string) => {
+        console.log("PropertyKey : " + propertyKey + " : " + typeAttribut);
+    }
+}
+
+function decoAttribut2(target: any, propertyKey: string){
+    console.log("Decorateur Attribut");
+}
+
 @decoClass("Perso")
 class Perso{
+    @decoAttribut("string")
+    @decoAttribut2
     private _nom : string;
+    @decoAttribut("number")
     private _age : number;
 
     constructor(nom:string,age:number){
@@ -18,7 +31,8 @@ class Perso{
 
 @decoClass("Humain")
 class Humain extends Perso{
-
+    @decoAttribut("string")
+    private _race = "Humain";
 }
 
 const p1 = new Perso("Matthieu",31);

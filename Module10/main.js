@@ -10,6 +10,14 @@ function decoClass(nomClasse) {
         console.log("Décorateur de la classe : " + nomClasse);
     };
 }
+function decoAttribut(typeAttribut) {
+    return (target, propertyKey) => {
+        console.log("PropertyKey : " + propertyKey + " : " + typeAttribut);
+    };
+}
+function decoAttribut2(target, propertyKey) {
+    console.log("Decorateur Attribut");
+}
 let Perso = class Perso {
     constructor(nom, age) {
         console.log("construteur de la classe Perso");
@@ -17,11 +25,25 @@ let Perso = class Perso {
         this._age = age;
     }
 };
+__decorate([
+    decoAttribut("string"),
+    decoAttribut2
+], Perso.prototype, "_nom", void 0);
+__decorate([
+    decoAttribut("number")
+], Perso.prototype, "_age", void 0);
 Perso = __decorate([
     decoClass("Perso")
 ], Perso);
 let Humain = class Humain extends Perso {
+    constructor() {
+        super(...arguments);
+        this._race = "Humain";
+    }
 };
+__decorate([
+    decoAttribut("string")
+], Humain.prototype, "_race", void 0);
 Humain = __decorate([
     decoClass("Humain")
 ], Humain);
