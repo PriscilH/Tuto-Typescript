@@ -5,8 +5,10 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
     else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
     return c > 3 && r && Object.defineProperty(target, key, r), r;
 };
-function decoClass(constructor) {
-    console.log("Décorateur de la classe");
+function decoClass(nomClasse) {
+    return (constructor) => {
+        console.log("Décorateur de la classe : " + nomClasse);
+    };
 }
 let Perso = class Perso {
     constructor(nom, age) {
@@ -16,7 +18,13 @@ let Perso = class Perso {
     }
 };
 Perso = __decorate([
-    decoClass
+    decoClass("Perso")
 ], Perso);
+let Humain = class Humain extends Perso {
+};
+Humain = __decorate([
+    decoClass("Humain")
+], Humain);
 const p1 = new Perso("Matthieu", 31);
 const p2 = new Perso("Tya", 18);
+const p3 = new Humain("Milo", 31);

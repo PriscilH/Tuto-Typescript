@@ -1,8 +1,10 @@
-function decoClass(constructor:Function){
-    console.log("Décorateur de la classe")
+function decoClass(nomClasse:string){
+    return (constructor : Function) => {
+        console.log("Décorateur de la classe : "+ nomClasse);
+    }
 }
 
-@decoClass
+@decoClass("Perso")
 class Perso{
     private _nom : string;
     private _age : number;
@@ -14,5 +16,11 @@ class Perso{
     }
 }
 
+@decoClass("Humain")
+class Humain extends Perso{
+
+}
+
 const p1 = new Perso("Matthieu",31);
 const p2 = new Perso ("Tya",18);
+const p3 = new Humain("Milo",31);
